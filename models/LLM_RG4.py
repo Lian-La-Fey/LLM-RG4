@@ -11,7 +11,7 @@ from evalcap.meteor.meteor import Meteor
 from transformers import SwinModel
 from lightning_tools.optim import config_optimizer
 from peft import get_peft_model, LoraConfig, TaskType
-import pdb
+
 import torch.nn.functional as F
 from transformers import AutoModel, AutoTokenizer
 from transformers import AutoImageProcessor
@@ -20,7 +20,7 @@ import numpy as np
 import pandas as pd
 from models.metrics import compute_mlc
 from transformers import get_cosine_schedule_with_warmup
-import ipdb
+
 
 class LLM_RG4(pl.LightningModule):
     def __init__(self, args):
