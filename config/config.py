@@ -10,9 +10,9 @@ parser.add_argument('--sw_annotation', type=str, default=r'./data/mimic_cxr/anno
 parser.add_argument('--mn_annotation', type=str, default=r'./data/mimic_cxr/annotation.json', help="annotation file of the dataset")
 parser.add_argument('--mw_annotation', type=str, default=r'./data/mimic_cxr/annotation.json', help="annotation file of the dataset")
 parser.add_argument('--base_dir', type=str, default=r'./data/mimic_cxr/images', help="base dir to help find images")
-parser.add_argument('--batch_size', default=6, type=int, help="use for training duration per worker")
-parser.add_argument('--val_batch_size', default=16, type=int, help="use for validation duration per worker")
-parser.add_argument('--test_batch_size', default=16, type=int, help="use for testing duration per worker")
+parser.add_argument('--batch_size', default=2, type=int, help="use for training duration per worker")
+parser.add_argument('--val_batch_size', default=2, type=int, help="use for validation duration per worker")
+parser.add_argument('--test_batch_size', default=2, type=int, help="use for testing duration per worker")
 parser.add_argument('--prefetch_factor', default=4, type=int, help="use for training duration per worker")
 parser.add_argument('--num_workers', default=8, type=int, help="Cpu num for dataloaders")
 

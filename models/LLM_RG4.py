@@ -152,7 +152,7 @@ class LLM_RG4(pl.LightningModule):
             self.load_state_dict(state_dict=state_dict, strict=False)
             print(f'Load checkpoint from {args.visual_delta_file}')
         if args.delta_file is not None:
-            state_dict = torch.load(args.delta_file, map_location=torch.device(f'cuda:{torch.cuda.current_device()}'))[
+            state_dict = torch.load(args.delta_file, map_location=torch.device(f'cuda:{torch.cuda.current_device()}'), weights_only=False)[
                 'model']
             self.load_state_dict(state_dict=state_dict, strict=False)
             print(f'Load checkpoint from {args.delta_file}')

@@ -1,2 +1,7 @@
 __pycache__
 save
+hf
+MIMIC-RG4
+*.pth
+MIMIC-RG4.zip
+mimic-cxr-jpg

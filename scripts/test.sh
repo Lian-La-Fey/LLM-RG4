@@ -1,10 +1,10 @@
 #!/bin/bash
 dataset="mimic_cxr"
 base_dir="./mimic-cxr-jpg/2.0.0/files/"
-sn_annotation="./final_single_view_no_long_add1score_sentence_level.json"
-sw_annotation="./final_single_view_with_long_add1score_sentence_level.json"
-mn_annotation="./final_multi_view_no_long_add1score_sentence_level.json"
-mw_annotation="./final_multi_view_with_long_add1score_sentence_level.json"
+sn_annotation="./MIMIC-RG4/final_single_view_no_long_add1score_sentence_level.json"
+sw_annotation="./MIMIC-RG4/final_single_view_with_long_add1score_sentence_level.json"
+mn_annotation="./MIMIC-RG4/final_multi_view_no_long_add1score_sentence_level.json"
+mw_annotation="./MIMIC-RG4/final_multi_view_with_long_add1score_sentence_level.json"
 vicuna_model="./hf/vicuna-7b-v1.5"
 rad_dino_path="./hf/rad-dino"
 cxr_bert_path="./hf/BiomedVLP-CXR-BERT-specialized"
@@ -34,8 +34,8 @@ python -u train.py \
     --cxr_bert_path ${cxr_bert_path} \
     --chexbert_path ${chexbert_path} \
     --bert_path ${bert_path} \
-    --batch_size 16 \
-    --val_batch_size 4 \
+    --batch_size 2 \
+    --val_batch_size 2 \
     --freeze_vm True \
     --savedmodel_path ${savepath} \
     --max_length 100 \
@@ -60,6 +60,6 @@ python -u train.py \
     --learning_rate 3e-4 \
     --visual_token_number 128 \
     --test_mode ${test_mode} \
-    --test_batch_size 8 \
+    --test_batch_size 2 \
     --delta_file ${stage2_ckpt_path} \
     2>&1 | tee -a ${savepath}/log.txt
