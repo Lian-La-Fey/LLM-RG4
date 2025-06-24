@@ -40,8 +40,8 @@ class LLM_RG4(pl.LightningModule):
 
         if args.stage_class == 1:
             self.APPA_visual_query_tokens = nn.Parameter(
-                    torch.zeros(1, args.visual_token_number, 768)
-                )
+                torch.zeros(1, args.visual_token_number, 768, device=self.device)
+            )
             self.APPA_visual_query_tokens.data.normal_(mean=0.0, std=0.02)
             self.APPA_crossattention_block = nn.MultiheadAttention(768, 12, dropout=0.1, add_bias_kv=True,
                                                                        add_zero_attn=True)
@@ -55,8 +55,8 @@ class LLM_RG4(pl.LightningModule):
         elif args.stage_class == 2:
             # APPA
             self.APPA_visual_query_tokens = nn.Parameter(
-                    torch.zeros(1, args.visual_token_number, 768)
-                )
+                torch.zeros(1, args.visual_token_number, 768, device=self.device)
+            )
             self.APPA_visual_query_tokens.data.normal_(mean=0.0, std=0.02)
             self.APPA_crossattention_block = nn.MultiheadAttention(768, 12, dropout=0.1, add_bias_kv=True,
                                                                        add_zero_attn=True)
@@ -103,6 +103,8 @@ class LLM_RG4(pl.LightningModule):
                 args.vicuna_model,
                 torch_dtype=torch.bfloat16,
             )
+        
+        self.llama_model.gradient_checkpointing_enable()
 
         if args.llm_use_lora:
             self.embed_tokens = self.llama_model.get_input_embeddings()

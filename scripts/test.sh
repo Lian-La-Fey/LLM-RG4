@@ -34,8 +34,8 @@ python -u train.py \
     --cxr_bert_path ${cxr_bert_path} \
     --chexbert_path ${chexbert_path} \
     --bert_path ${bert_path} \
-    --batch_size 2 \
-    --val_batch_size 2 \
+    --batch_size 1 \
+    --val_batch_size 1 \
     --freeze_vm True \
     --savedmodel_path ${savepath} \
     --max_length 100 \
@@ -60,6 +60,6 @@ python -u train.py \
     --learning_rate 3e-4 \
     --visual_token_number 128 \
     --test_mode ${test_mode} \
-    --test_batch_size 2 \
+    --test_batch_size 1 \
     --delta_file ${stage2_ckpt_path} \
     2>&1 | tee -a ${savepath}/log.txt
